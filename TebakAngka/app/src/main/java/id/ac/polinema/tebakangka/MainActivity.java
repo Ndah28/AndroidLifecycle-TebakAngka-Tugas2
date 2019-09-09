@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 	//  TODO: deklarasikan variabel di sini
 	private EditText input_number;
 	int random = 0;
-	private Button guess_button, reset_button;
+	private Button tebak_button, reset_button;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 		// TODO: bind layout di sini
 		initRandomNumber();
 		input_number = findViewById(R.id.number_input);
-		guess_button = findViewById(R.id.guess_button);
+		tebak_button = findViewById(R.id.guess_button);
 		Toast.makeText(this, ""+random, Toast.LENGTH_SHORT).show();
 	}
 
@@ -43,13 +43,16 @@ public class MainActivity extends AppCompatActivity {
 		}else if (number < random) {
 			Toast.makeText(this, "Tebakan anda terlalu kecil!", Toast.LENGTH_SHORT).show();
 		}else {
-			guess_button.setEnabled(false);
-			Toast.makeText(this, "Tabakan anda benar!", Toast.LENGTH_SHORT).show();
+			tebak_button.setEnabled(false);
+			Toast.makeText(this, "Tebakan anda benar!", Toast.LENGTH_SHORT).show();
 		}
 	}
 
 	public void handleReset(View view) {
 		// TODO: Reset tampilan
 		input_number.setText("");
+		initRandomNumber();
+		Toast.makeText(this, ""+random, Toast.LENGTH_SHORT).show();
+		tebak_button.setEnabled(true);
 	}
 }
